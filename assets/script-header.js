@@ -21,5 +21,18 @@ document.querySelector('.close-button').addEventListener('click', function(){
 
 // burger menu (for tablets and smartphones)
 <div class="burger-menu">
-  <button class="burger-button" type="button" name="button"><i class="fas fa-bars"></i></button>
+  <button class="burger-open" type="button" name="button"><i class="fas fa-bars"></i></button>
 </div>
+<div class="menu">
+  <button class="burger-close" type="button" name="button"><i class="fas fa-times"></i></button>
+  <nav>
+    <ul>
+      <li>NOS ARTISANS</li>
+      <li>NOS PRODUITS</li>
+      <li>NOS ENGAGEMENTS</li>
+      <li>LE MEDIA</li>
+    </ul>
+  </nav>
+</div>
+
+document.querySelector('.burger-close').style.display = "none";
