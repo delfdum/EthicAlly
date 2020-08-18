@@ -25,12 +25,18 @@ document.querySelector('.close-button').addEventListener('click', function(){
 // burger menu (for tablets and smartphones)
 
 document.querySelector('.smartphone-menu').style.display = "none";
+document.querySelector('.burger-close').style.display = "none";
+document.querySelector('.burger-menu-close').style.display = "none";
 document.querySelector('.burger-open').addEventListener('click', function(){
   document.querySelector('.smartphone-menu').style.display = "block";
   document.querySelector('.burger-menu').style.display = "none";
+  document.querySelector('.burger-close').style.display = "block";
+  document.querySelector('.burger-menu-close').style.display = "block";
 });
 
 document.querySelector('.burger-close').addEventListener('click', function(){
   document.querySelector('.smartphone-menu').style.display = "none";
   document.querySelector('.burger-menu').style.display = "block";
+  document.querySelector('.burger-close').style.display = "none";
+  document.querySelector('.burger-menu-close').style.display = "none";
 })
