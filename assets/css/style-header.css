@@ -68,6 +68,41 @@ header .menu {
   width: 40vw;
 }
 
+.artisans {
+  background-color: #f0f0f5;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+}
+
+.main-item, .item-group {
+  border: 1px solid red;
+  height: 70vh;
+  width: 47vw;
+}
+
+.item-group {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.item {
+  border: 1px solid red;
+  height: auto;
+  width: 23vw;
+
+}
+
+footer {
+  background-color: #d9e3e9;
+  min-height: 20vh;
+  padding: 2rem 4rem;
+}
+
+
 
 /* TITLES */
 
@@ -129,6 +164,14 @@ header .menu {
 .menu li:hover:before {
   visibility: visible;
   transform: scaleX(1);
+}
+
+.legal ul {
+  display: flex;
+}
+
+.legal li {
+  list-style-type: none;
 }
 
 /* INPUTS */
