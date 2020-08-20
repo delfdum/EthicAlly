@@ -20,6 +20,12 @@ export default {
 
     props: ['entreprise'],
 
+    methods: {
+    voirProjet(identifiant) {
+      this.$router.push({ path: `/ProduitDetails/${identifiant}` });
+        }
+    } 
+
 }
 </script>
 
@@ -37,13 +43,13 @@ export default {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  height: 85vh;
+ 
   justify-content: space-between;
 }
 
 .product {
   background-color: rgb(240, 220, 240);
-  height: 48%;
+  
   width: 18vw;
 }
 
@@ -60,7 +66,7 @@ export default {
   }
 
     .product {
-    height: 15vh;
+    /* height: 15vh; */
     width: 47vw;
   }
 

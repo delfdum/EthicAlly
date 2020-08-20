@@ -2,19 +2,12 @@
   <div>
       <Navbar/>
  
-
         <h4>Titre Produits</h4>
         <div class="products">
             <div class="products-div" v-for="entreprise in entreprises" :key="entreprise.id">
               <CarteProduit :entreprise="entreprise"/>
             </div>
-        </div>
-   
-
-
-    
-  
-     
+        </div>   
 
       <Footer/>
   </div>
@@ -40,11 +33,7 @@ export default {
  
       };
   },
-    methods: {
-    voirProjet(identifiant) {
-      this.$router.push({ path: `/ProduitDetails/${identifiant}` });
-    }
-  } 
+
 
 }
 </script >
@@ -63,7 +52,7 @@ export default {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  height: auto;
+ 
   justify-content: space-between;
 }
 
@@ -81,7 +70,7 @@ export default {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    height: 80vh;
+
   }
  }
 
@@ -90,7 +79,6 @@ export default {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    height: 80vh;
   }
   .products-div h4, .artisans-div h4, .engagements-div h4, .artisan-highlight h4 {
     font-size: 3rem;
