@@ -34,10 +34,10 @@
       </div>
       <div class="smartphone-header">
         <div class="burger-menu">
-          <button class="burger-open" type="button" name="button"><i class="fas fa-bars"></i></button>
+          <button class="burger-open" type="button" name="button" @click.prevent="openSmartphoneMenu" v-if="burgerDisplay"><i class="fas fa-bars"></i></button>
         </div>
-        <div class="smartphone-menu">
-          <button class="burger-close" type="button" name="button"><i class="fas fa-times"></i></button>
+        <div class="smartphone-menu" v-if="smartphoneMenuDisplay">
+          <button class="burger-close" type="button" name="button" @click.prevent="closeSmartphoneMenu" v-if="crossDisplay"><i class="fas fa-times"></i></button>
           <nav>
             <ul>
               <li>NOS ARTISANS</li>
@@ -77,6 +77,9 @@ export default {
         searchBar: false,
         openButtonDisplay: true,
         closeButtonDisplay: false,
+        smartphoneMenuDisplay: false,
+        crossDisplay: false,
+        burgerDisplay: true,
       }
     },
 
@@ -93,6 +96,16 @@ export default {
         this.searchBar = false;
         this.closeButtonDisplay = false;
         this.openButtonDisplay = true;
+      },
+      openSmartphoneMenu() {
+        this.smartphoneMenuDisplay = true;
+        this.crossDisplay = true;
+        this.burgerDisplay = false;
+      },
+      closeSmartphoneMenu() {
+        this.smartphoneMenuDisplay = false;
+        this.crossDisplay = false;
+        this.burgerDisplay = true;
       },
     }
 
