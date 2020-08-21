@@ -1,9 +1,9 @@
 <template>
     <div>
          <header>
-      <div class="covid-banner">
+      <div v-if="display" class="covid-banner">
         <p>Nos livraisons pendant la période covid-19</p>
-        <button type="button" class="acceptbutton"><i class="fas fa-times"></i></button>
+        <button type="button" class="acceptbutton" @click.prevent="closeBanner"><i class="fas fa-times"></i></button>
       </div>
       <div class="desktop-header">
         <div class="logo-and-menu">
@@ -23,8 +23,12 @@
         </div>
         <div class="search-bar">
           <div class="magnifier">
-            <button type="button" name="button" class="searchbar-button"><i class="fas fa-search"></i></button>
-            <button type="button" class="close-button"><i class="fas fa-times"></i></button>
+
+            <button type="button" name="button" class="searchbar-button" @click.prevent="openSearch" v-if="openButtonDisplay"><i class="fas fa-search"></i></button>
+
+
+            <button type="button" class="close-button" @click.prevent="closeSearch" v-if="closeButtonDisplay"><i class="fas fa-times"></i></button>
+
           </div>
         </div>
       </div>
@@ -53,15 +57,11 @@
     </header>
 
     <main>
-      <div class="pop-up-searchbar-container">
+      <div v-if="searchBar" class="pop-up-searchbar-container">
         <div class="pop-up-searchbar">
           <label for="searchbar">Tapez votre recherche ...</label><input type="text" name="searchbar" value="" placeholder="recherche ..."><button class="research-button" type="button" name="button"><i class="fas fa-search"></i></button>
       </div>
       </div>
-
-
-
-
     </main>
 
     </div>
@@ -70,7 +70,32 @@
 <script>
 export default {
     name: "Navbar",
-      
+
+    data() {
+      return {
+        display: true,
+        searchBar: false,
+        openButtonDisplay: true,
+        closeButtonDisplay: false,
+      }
+    },
+
+    methods: {
+      closeBanner() {
+        this.display = false;
+      },
+      openSearch() {
+        this.searchBar = true;
+        this.closeButtonDisplay = true;
+        this.openButtonDisplay = false;
+      },
+      closeSearch() {
+        this.searchBar = false;
+        this.closeButtonDisplay = false;
+        this.openButtonDisplay = true;
+      },
+    }
+
 }
 </script>
 
