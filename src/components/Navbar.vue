@@ -1,7 +1,7 @@
 <template>
     <div>
          <header>
-      <div v-if="display" class="covid-banner">
+      <div v-if="covidDisplay" class="covid-banner">
         <p>Nos livraisons pendant la période covid-19</p>
         <button type="button" class="acceptbutton" @click.prevent="closeBanner"><i class="fas fa-times"></i></button>
       </div>
@@ -73,7 +73,7 @@ export default {
 
     data() {
       return {
-        display: true,
+        covidDisplay: true,
         searchBar: false,
         openButtonDisplay: true,
         closeButtonDisplay: false,
@@ -85,23 +85,27 @@ export default {
 
     methods: {
       closeBanner() {
-        this.display = false;
+        this.covidDisplay = false;
       },
+
       openSearch() {
         this.searchBar = true;
         this.closeButtonDisplay = true;
         this.openButtonDisplay = false;
       },
+
       closeSearch() {
         this.searchBar = false;
         this.closeButtonDisplay = false;
         this.openButtonDisplay = true;
       },
+
       openSmartphoneMenu() {
         this.smartphoneMenuDisplay = true;
         this.crossDisplay = true;
         this.burgerDisplay = false;
       },
+
       closeSmartphoneMenu() {
         this.smartphoneMenuDisplay = false;
         this.crossDisplay = false;
@@ -168,7 +172,6 @@ header .menu {
   padding: 1rem;
   position: absolute;
 }
-
 
 
 /* TITLES */
@@ -266,6 +269,18 @@ header .menu {
     font-size: 2rem;
   }
 
+  .burger-menu, .burger-menu-close {
+    width: 20vw;
+  }
+
+  .search-bar {
+    width: 20vw;
+  }
+
+  .smartphone-menu {
+    margin-top: 2rem;
+  }
+
   h1 {
     font-size: 5rem;
   }
@@ -276,6 +291,12 @@ header .menu {
     font-size: 4.5rem;
     font-weight: 400;
     margin-left: 2rem;
+  }
+
+  .smartphone-menu li {
+    font-size: 2rem;
+    line-height: 4.5rem;
+    list-style-type: none;
   }
 
 
@@ -312,6 +333,10 @@ header .menu {
     border: none;
     font-size: 8rem;
     margin-left: 2rem;
+  }
+
+  .fa-bars, .fa-times {
+    font-size: 6rem;
   }
 
 
