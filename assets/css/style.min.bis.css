@@ -1,0 +1,12 @@
+.main-wrapper>.editorial-wrapper:first-child {
+    margin-top:0
+   }
+
+   .main-wrapper {
+    padding-bottom:80px
+   }
+   .template-404 .main-wrapper,
+   .template-index .main-wrapper,
+   .template-page .main-wrapper {
+    padding-bottom:0
+   }
