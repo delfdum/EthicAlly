@@ -1,13 +1,11 @@
 <template>
   <div class="product">
-          <h1>{{entreprise.title}}</h1>
-    <h3>Crée par {{entreprise.etpName}}</h3>
-    <!-- <img src="" alt="Une photo du porteur du projet et le logo de l'entreprise"> -->
-    <h4>{{entreprise.type}}</h4>
-    <p>{{entreprise.shortPrez}}</p>
-    <p>{{entreprise.needs}} €</p>
+    <h1>{{product.name}}</h1>
+    <h2>{{product.category}}</h2>
+    <!-- <h3>Crée par {{artisan[product.artisan_id]}}</h3> -->
+    <h4>{{product.type}}</h4>
 
-    <button @click="voirProjet(entreprise.id)">Voir ce projet en détail</button>
+    <button @click="voirProjet(product.id_product)">Voir ce projet en détail</button>
     <!-- <router-link to="/SinglePage">
       <button>Voir ce projet en détail</button>
     </router-link> -->
@@ -18,13 +16,7 @@
 export default {
     name: "CarteProduit",
 
-    props: ['entreprise'],
-
-    methods: {
-    voirProjet(identifiant) {
-      this.$router.push({ path: `/ProduitDetails/${identifiant}` });
-        }
-    } 
+    props: ['product'],
 
 }
 </script>
@@ -43,13 +35,13 @@ export default {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
- 
+  height: 85vh;
   justify-content: space-between;
 }
 
 .product {
   background-color: rgb(240, 220, 240);
-  
+  height: 48%;
   width: 18vw;
 }
 
@@ -66,7 +58,7 @@ export default {
   }
 
     .product {
-    /* height: 15vh; */
+    height: 15vh;
     width: 47vw;
   }
 
