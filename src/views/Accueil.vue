@@ -1,14 +1,14 @@
 <template>
   <div>
       <Navbar/>
- 
+
+
         <h4>Titre Produits</h4>
         <div class="products">
-            <div class="products-div" v-for="entreprise in entreprises" :key="entreprise.id">
-              <CarteProduit :entreprise="entreprise"/>
+            <div class="products-div" v-for="product in products" :key="product.id_product">
+              <CarteProduit :product="product"/>
             </div>
-        </div>   
-
+        </div>
       <Footer/>
   </div>
 </template>
@@ -17,7 +17,7 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import CarteProduit from "@/components/CarteProduit";
-import {entreprises} from "@/data.js";
+import {products as productsFromData} from "@/data.js";
 
 
 
@@ -29,11 +29,18 @@ export default {
 
   data() {
       return {
-        entreprises : entreprises,
- 
+        products : productsFromData.filter(product =>{
+          return product.artisan_id === 2;
+        }),
+
       };
   },
+    methods: {
+    voirProjet(identifiant) {
+      this.$router.push({ path: `/ProduitDetails/${identifiant}` });
+    }
 
+  }
 
 }
 </script >
@@ -52,7 +59,7 @@ export default {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
- 
+  height: auto;
   justify-content: space-between;
 }
 
@@ -70,7 +77,7 @@ export default {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-
+    height: 80vh;
   }
  }
 
@@ -79,6 +86,7 @@ export default {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    height: 80vh;
   }
   .products-div h4, .artisans-div h4, .engagements-div h4, .artisan-highlight h4 {
     font-size: 3rem;
