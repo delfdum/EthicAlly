@@ -1,9 +1,9 @@
 <template>
     <div>
          <header>
-      <div class="covid-banner">
+      <div v-if="covidDisplay" class="covid-banner">
         <p>Nos livraisons pendant la période covid-19</p>
-        <button type="button" class="acceptbutton"><i class="fas fa-times"></i></button>
+        <button type="button" class="acceptbutton" @click.prevent="closeBanner"><i class="fas fa-times"></i></button>
       </div>
       <div class="desktop-header">
         <div class="logo-and-menu">
@@ -23,17 +23,21 @@
         </div>
         <div class="search-bar">
           <div class="magnifier">
-            <button type="button" name="button" class="searchbar-button"><i class="fas fa-search"></i></button>
-            <button type="button" class="close-button"><i class="fas fa-times"></i></button>
+
+            <button type="button" name="button" class="searchbar-button" @click.prevent="openSearch" v-if="openButtonDisplay"><i class="fas fa-search"></i></button>
+
+
+            <button type="button" class="close-button" @click.prevent="closeSearch" v-if="closeButtonDisplay"><i class="fas fa-times"></i></button>
+
           </div>
         </div>
       </div>
       <div class="smartphone-header">
         <div class="burger-menu">
-          <button class="burger-open" type="button" name="button"><i class="fas fa-bars"></i></button>
+          <button class="burger-open" type="button" name="button" @click.prevent="openSmartphoneMenu" v-if="burgerDisplay"><i class="fas fa-bars"></i></button>
         </div>
-        <div class="smartphone-menu">
-          <button class="burger-close" type="button" name="button"><i class="fas fa-times"></i></button>
+        <div class="smartphone-menu" v-if="smartphoneMenuDisplay">
+          <button class="burger-close" type="button" name="button" @click.prevent="closeSmartphoneMenu" v-if="crossDisplay"><i class="fas fa-times"></i></button>
           <nav>
             <ul>
               <li>NOS ARTISANS</li>
@@ -53,15 +57,11 @@
     </header>
 
     <main>
-      <div class="pop-up-searchbar-container">
+      <div v-if="searchBar" class="pop-up-searchbar-container">
         <div class="pop-up-searchbar">
           <label for="searchbar">Tapez votre recherche ...</label><input type="text" name="searchbar" value="" placeholder="recherche ..."><button class="research-button" type="button" name="button"><i class="fas fa-search"></i></button>
       </div>
       </div>
-
-
-
-
     </main>
 
     </div>
@@ -70,7 +70,49 @@
 <script>
 export default {
     name: "Navbar",
-      
+
+    data() {
+      return {
+        covidDisplay: true,
+        searchBar: false,
+        openButtonDisplay: true,
+        closeButtonDisplay: false,
+        smartphoneMenuDisplay: false,
+        crossDisplay: false,
+        burgerDisplay: true,
+      }
+    },
+
+    methods: {
+      closeBanner() {
+        this.covidDisplay = false;
+      },
+
+      openSearch() {
+        this.searchBar = true;
+        this.closeButtonDisplay = true;
+        this.openButtonDisplay = false;
+      },
+
+      closeSearch() {
+        this.searchBar = false;
+        this.closeButtonDisplay = false;
+        this.openButtonDisplay = true;
+      },
+
+      openSmartphoneMenu() {
+        this.smartphoneMenuDisplay = true;
+        this.crossDisplay = true;
+        this.burgerDisplay = false;
+      },
+
+      closeSmartphoneMenu() {
+        this.smartphoneMenuDisplay = false;
+        this.crossDisplay = false;
+        this.burgerDisplay = true;
+      },
+    }
+
 }
 </script>
 
@@ -130,7 +172,6 @@ header .menu {
   padding: 1rem;
   position: absolute;
 }
-
 
 
 /* TITLES */
@@ -228,6 +269,18 @@ header .menu {
     font-size: 2rem;
   }
 
+  .burger-menu, .burger-menu-close {
+    width: 20vw;
+  }
+
+  .search-bar {
+    width: 20vw;
+  }
+
+  .smartphone-menu {
+    margin-top: 2rem;
+  }
+
   h1 {
     font-size: 5rem;
   }
@@ -238,6 +291,12 @@ header .menu {
     font-size: 4.5rem;
     font-weight: 400;
     margin-left: 2rem;
+  }
+
+  .smartphone-menu li {
+    font-size: 2rem;
+    line-height: 4.5rem;
+    list-style-type: none;
   }
 
 
@@ -274,6 +333,10 @@ header .menu {
     border: none;
     font-size: 8rem;
     margin-left: 2rem;
+  }
+
+  .fa-bars, .fa-times {
+    font-size: 6rem;
   }
 
 
