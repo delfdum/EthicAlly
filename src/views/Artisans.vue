@@ -1,37 +1,29 @@
 <template>
   <div>
-      <Navbar/>
-
-
         <h4>Nos artisans</h4>
         <div class="products">
             <div class="products-div" v-for="artisan in artisans" :key="artisan.id">
               <CarteArtisan :artisan="artisan"/>
             </div>
         </div>
-      <Footer/>
+ 
   </div>
 </template>
 
 <script>
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
 import CarteArtisan from "@/components/CarteArtisan";
 import {artisans as artisansFromData} from "@/data.js";
-
-
 
 export default {
   name: 'Artisans',
 
   components:
-    { Navbar, Footer, CarteArtisan },
+    { CarteArtisan },
 
   data() {
       return {
-        artisans : artisansFromData
-  
-  }
+        artisans : artisansFromData 
+      }
   }
 }  
 
@@ -39,7 +31,7 @@ export default {
 
 <style lang="scss">
 
-  .products-div {
+.products-div {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -51,7 +43,6 @@ export default {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  height: auto;
   justify-content: space-between;
 }
 
@@ -69,7 +60,6 @@ export default {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    height: 80vh;
   }
  }
 
@@ -78,11 +68,10 @@ export default {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    height: 80vh;
   }
   .products-div h4, .artisans-div h4, .engagements-div h4, .artisan-highlight h4 {
     font-size: 3rem;
-}
+  }
 }
 
 
