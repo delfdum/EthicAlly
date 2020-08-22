@@ -8,14 +8,16 @@
       <div class="desktop-header">
         <div class="logo-and-menu">
           <div>
-            <img class="logo" src="../assets/logo1.png" alt="logo">
+            <router-link :to="'/accueil'">
+              <img class="logo" src="../assets/logo1.png" alt="logo">
+            </router-link>           
           </div>
           <div class="menu">
             <nav>
               <ul>
-                <li>NOS ARTISANS</li>
-                <li>NOS PRODUITS</li>
-                <li>NOS ENGAGEMENTS</li>
+                <li> <router-link :to="'/artisans'">NOS ARTISANS </router-link> </li>
+                <li> <router-link :to="'/allproduits'">NOS PRODUITS </router-link> </li>
+                <li> <router-link :to="'/nosEngagements'">NOS ENGAGEMENTS </router-link> </li>
                 <li>LE MEDIA</li>
               </ul>
             </nav>
@@ -39,13 +41,13 @@
         <div class="smartphone-menu" v-if="smartphoneMenuDisplay">
           <button class="burger-close" type="button" name="button" @click.prevent="closeSmartphoneMenu" v-if="crossDisplay"><i class="fas fa-times"></i></button>
           <nav>
-            <ul>
-              <li>NOS ARTISANS</li>
-              <li>NOS PRODUITS</li>
-              <li>NOS ENGAGEMENTS</li>
-              <li>LE MEDIA</li>
-            </ul>
-          </nav>
+              <ul>
+                <li> <router-link :to="'/artisans'">NOS ARTISANS </router-link> </li>
+                <li> <router-link :to="'/allproduits'">NOS PRODUITS </router-link> </li>
+                <li> <router-link :to="'/nosEngagements'">NOS ENGAGEMENTS </router-link> </li>
+                <li>LE MEDIA</li>
+              </ul>
+            </nav>
         </div>
         <div class="title">
           <h1>Ethically</h1>
