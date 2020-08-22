@@ -8,10 +8,12 @@
         </div>
 
         <h4>Nos artisans du moment</h4>
-        <div class="products-div" v-for="artisan in artisans" :key="artisan.id">
-           <div v-if="artisan.firstPage" >
-              <CarteArtisan :artisan="artisan"/>
-           </div>
+        <div class="products">
+            <div class="products-div" v-for="artisan in artisans" :key="artisan.id">
+              <div v-if="artisan.firstPage" >
+                  <CarteArtisan :artisan="artisan"/>
+              </div>
+            </div>
         </div>
 
     
@@ -43,7 +45,7 @@ export default {
 
 <style lang="scss">
 
-  .products-div {
+.products-div {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
