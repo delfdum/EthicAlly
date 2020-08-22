@@ -2,12 +2,11 @@
   <div class="artisan">
     <h1>{{artisan.name}}</h1>
     <h2>{{artisan.presentation}}</h2>
-    <!-- <h3>Crée par {{artisan[artisan.artisan_id]}}</h3> -->
     <h4>{{artisan.origine}}</h4>
 
-    <button @click="voirProjet(artisan.id)">Voir ce projet en détail</button>
+    <button @click="voirArtisan(artisan.id)">Voir le travail de cet artisan</button>
  
-    </div>
+  </div>
 </template>
 
 <script>
@@ -17,13 +16,10 @@ export default {
     props: ['artisan'],
 
     methods: {
-    voirProjet(identifiant) {
-      this.$router.push({ path: `/artisandetails/${identifiant}` });
+      voirArtisan(identifiant) {
+        this.$router.push({ path: `/artisandetails/${identifiant}` });
+      }
     }
-
-  }
-
-
 }
 </script>
 
@@ -55,15 +51,14 @@ export default {
   text-align: center;
 }
 
-  .artisans {
+.artisans {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-  }
+}
 
-    .artisan {
-
+.artisan {
     width: 47vw;
-  }
+}
 
 </style>
