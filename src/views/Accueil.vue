@@ -1,31 +1,24 @@
 <template>
   <div>
-      <Navbar/>
-
-
         <h4>Titre Produits</h4>
         <div class="products">
             <div class="products-div" v-for="product in products" :key="product.id_product">
               <CarteProduit :product="product"/>
             </div>
         </div>
-      <Footer/>
+   
   </div>
 </template>
 
 <script>
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
 import CarteProduit from "@/components/CarteProduit";
 import {products as productsFromData} from "@/data.js";
-
-
 
 export default {
   name: 'Accueil',
 
   components:
-    { Navbar, Footer, CarteProduit },
+    { CarteProduit },
 
   data() {
       return {

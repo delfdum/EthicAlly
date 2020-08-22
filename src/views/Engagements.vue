@@ -1,7 +1,5 @@
 <template>
 <div>
-    <Navbar/>
-
     <div class="navEngagements">
         <ul>
   <li><a class="navEngagements-item " href="#respectHumans">Respect des humains</a></li>
@@ -11,9 +9,7 @@
   <li><a class="navEngagements-item " href="#ourMission">Notre mission </a></li>
   <li><a class="navEngagements-item " href="#entreprise">Une entreprise sociale et solidaire</a></li>
         </ul>
-    </div>  
-    
-     
+    </div>     
       
 <div class="bloc bg-image1 fz-white" > 
     <div class="pad-20vh pad-respo">  
@@ -103,25 +99,13 @@
             </div>
     </div>    
        
-
-
-
-    
-
-        <Footer/>
 </div>
 </template>
 
 <script>
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
 
 export default {
     name: 'Engagements',
-     components:
-    { Navbar, Footer },
-
-
 }
 </script>
 
