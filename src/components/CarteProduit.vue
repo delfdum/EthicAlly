@@ -2,13 +2,10 @@
   <div class="product">
     <h1>{{product.name}}</h1>
     <h2>{{product.category}}</h2>
-    <!-- <h3>Crée par {{artisan[product.artisan_id]}}</h3> -->
     <h4>{{product.type}}</h4>
 
-    <button @click="voirProjet(product.id_product)">Voir ce projet en détail</button>
-    <!-- <router-link to="/SinglePage">
-      <button>Voir ce projet en détail</button>
-    </router-link> -->
+    <button @click="voirProduit(product.id_product)">Voir ce produit</button>
+
     </div>
 </template>
 
@@ -17,6 +14,12 @@ export default {
     name: "CarteProduit",
 
     props: ['product'],
+
+    methods: {
+      voirProduit(identifiant) {
+        this.$router.push({ path: `/produitDetails/${identifiant}` });
+      }
+    }
 
 }
 </script>
