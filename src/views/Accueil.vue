@@ -6,6 +6,15 @@
               <CarteProduit :product="product"/>
             </div>
         </div>
+
+        <h4>Nos artisans du moment</h4>
+        <div class="products-div" v-for="artisan in artisans" :key="artisan.id">
+           <div v-if="artisan.firstPage" >
+              <CarteArtisan :artisan="artisan"/>
+           </div>
+        </div>
+
+    
    
   </div>
 </template>
@@ -13,29 +22,23 @@
 <script>
 import CarteProduit from "@/components/CarteProduit";
 import {products as productsFromData} from "@/data.js";
+import CarteArtisan from "@/components/CarteArtisan";
+import {artisans as artisansFromData} from "@/data.js";
 
 export default {
-  name: 'Accueil',
+  name: 'Accueil, Artisans',
 
   components:
-    { CarteProduit },
+    { CarteProduit, CarteArtisan },
 
   data() {
-      return {
-        products : productsFromData.filter(product =>{
-          return product.artisan_id === 2;
-        }),
-
-      };
-  },
-    methods: {
-    voirProjet(identifiant) {
-      this.$router.push({ path: `/ProduitDetails/${identifiant}` });
-    }
-
+     return {
+      artisans : artisansFromData, 
+      products: productsFromData
+      }
   }
-
 }
+
 </script >
 
 <style lang="scss">
@@ -52,7 +55,6 @@ export default {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  height: auto;
   justify-content: space-between;
 }
 
@@ -70,7 +72,6 @@ export default {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    height: 80vh;
   }
  }
 
@@ -79,7 +80,6 @@ export default {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    height: 80vh;
   }
   .products-div h4, .artisans-div h4, .engagements-div h4, .artisan-highlight h4 {
     font-size: 3rem;
