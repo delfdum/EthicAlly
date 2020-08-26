@@ -4,8 +4,8 @@
       <div class="footer-divs">
         <div class="footer-div">
           <h6>Inscription Newsletter</h6>
-          <label for="newsletter">Newsletter : </label>
           <div class="newsletter">
+            <label for="newsletter"></label>
             <input type="email" name="newsletter" value="" placeholder="votre email">
             <button type="submit" name="button" class="send">Envoi !</button>
           </div>
@@ -20,7 +20,7 @@
         </div>
         <div class="footer-div">
           <h6>Contact upcycle</h6>
-          <!-- <p>Lorem</br>Ipsum</br>Dolor</br></p> -->
+          <p>upcycle@ethically.com</p>
         </div>
         <div class="separation">
         </div>
@@ -54,7 +54,7 @@
 
 </div>
 </template>
- 
+
 
 <script>
 export default {
@@ -64,10 +64,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
-
-
-
 
 
 footer {
@@ -149,7 +145,7 @@ footer {
   background-color: rgba(255, 255, 255, 1);
   border: none;
   border-radius: 0.5rem 0rem 0rem 0.5rem;
-  font-size: 0.7rem;
+  font-size: 0.9rem;
   margin-right: 0rem;
   padding: 0.2rem 0.5rem;
   width: 8rem;
@@ -160,11 +156,11 @@ footer {
 }
 
 .send {
-  background-color: rgba(240, 240, 240);
+  background-color: #dae1e5;
   border: none;
   border-radius: 0rem 0.5rem 0.5rem 0rem;
   color: #006845;
-  font-size: 0.7rem;
+  font-size: 0.9rem;
   font-weight: 500;
   margin-left: 0rem;
   padding: 0.2rem 0.5rem;
@@ -172,16 +168,23 @@ footer {
 }
 
 @media only screen and (max-device-width: 1024px)  {
+
+  footer {
+    padding: 2rem;
+  }
+
   .footer-divs {
     height: auto;
+    flex-direction: column;
     flex-wrap: wrap;
+    margin: auto;
   }
 
   .footer-div {
     background-color: rgb(240, 240, 240);
-    min-width: 39vw;
-    margin: 1rem;
-    padding: 1rem 2rem;
+    margin-bottom: 1rem;
+    min-width: 100%;
+    padding: 1.5rem 2rem 2rem 2rem;
   }
 
   .separation {
@@ -189,7 +192,7 @@ footer {
   }
 
   .footer-div p {
-    font-size: 1.5rem;
+    font-size: 1.1rem;
   }
 
   .footer-div h6 {
@@ -208,15 +211,51 @@ footer {
     font-size: 1.2rem;
   }
 
+  .newsletter {
+    justify-content: center;
+  }
+
+  .social-media {
+    font-size: 2rem;
+    margin: auto;
+    width: 60vw;
+  }
+
+  .legal {
+    width: 90vw;
+  }
+
+  .legal ul {
+    margin-left: 0rem;
+  }
+
+  .legal a {
+    font-size: 1.2rem;
+  }
+
 }
 
 @media only screen and (min-device-width: 375px) and (max-device-width: 667px)  {
 
+  .footer-div {
+    padding: 1.5rem 1rem 2rem 1rem;
+  }
+
+  .newsletter input {
+    width: 12rem;
+  }
+
+  .legal ul {
+    flex-direction: column;
+    margin-block-start: 0rem;
+    margin-left: -2rem;
+  }
+
+  .legal li {
+    margin-left: 0rem;
+  }
+
+
 }
 
 </style>>
-
-
-
-
-

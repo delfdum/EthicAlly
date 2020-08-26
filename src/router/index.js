@@ -48,7 +48,7 @@ const routes = [
     component: Engagements,
   },
   {
-    path: '/produitDetails/:id',
+    path: '/produitdetails/:id_product',
     name: 'ProduitDetails',
     component: ProduitDetails,
   },

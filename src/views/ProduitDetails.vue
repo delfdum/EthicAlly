@@ -1,64 +1,67 @@
-
-
 <template lang="html">
-  <div class="">
-
-      <Navbar/>
-
-    <h2>{{projetSelectionne.title}}</h2>
-    
-    <h3>Crée par {{projetSelectionne.etpName}}</h3>
-    <!-- <img src="" alt="Une photo du porteur du projet et le logo de l'entreprise"> -->
-    <h4>{{projetSelectionne.type}}</h4>
-    <p>{{projetSelectionne.shortPrez}}</p>
-    <p>{{projetSelectionne.needs}} €</p>
-
-    <p>{{projetSelectionne.participation}}</p>
-    <p>{{projetSelectionne.rentability}}</p>
-    <p>{{projetSelectionne.etpCurriculum}}</p>
-    <p>{{projetSelectionne.longPrez}}</p>
-
-    <Footer/>
+  <div class="product">
+    <h2>{{produitSelectionne.name}}</h2>
+    <h3>Crée par {{artisanSelectionne.name}}</h3>
+    <img :src="produitSelectionne.photo" :alt="produitSelectionne.name">
+    <p>{{produitSelectionne.longPrez}}</p>
+    <ul>
+      <li>{{produitSelectionne.dimensions}}</li>
+      <li>{{produitSelectionne.materials}}</li>
+      <li>{{produitSelectionne.origine}}</li>
+    </ul>
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-// import Project from "@/components/Project.vue";
-import {entreprises} from "@/data.js";
-
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
-
-
-export default {
-    name: 'ProduitsDetails',
-     components: { Navbar, Footer },
-
-
-
-
-   data() {
-    return {
-      entreprises: entreprises,
-      idProjetSelectionne: 0,
-      projetSelectionne: {},
-    };
+  import {products} from "@/data.js";
+  import {products as productsFromData} from "@/data.js";
+  import {artisans as artisansFromData} from "@/data.js";
+  export default {
+    name: 'ProduitDetails',
+    name: 'ArtisanDetails',
+    data() {
+      return {
+        products: productsFromData,
+        idProduitSelectionne: 0,
+        produitSelectionne: {},
+        idArtisanSelectionne: 0,
+        artisanSelectionne: {},
+      };
+    },
+  computed: {
+    artisans: function() {
+      return artisansFromData.filter(artisan => {
+        return artisan.id_product === parseInt(this.idProduitSelectionne, 10);
+      });
+    }
   },
 
   mounted() {
     // On récupère le params id (qui est dans l'url) grâce à l'objet $route
-    this.idProjetSelectionne = this.$route.params.id;
-
+    this.idProduitSelectionne = this.$route.params.id_product;
     // On sélectionne l'utilisateur qui a le même id que le params récupéré dans $route
-    this.projetSelectionne = this.entreprises.find(
-      (entreprise) => entreprise.id == this.idProjetSelectionne
-    );
-  },
-};
+    this.produitSelectionne = this.products.find(
+      product => product.id_product == this.idProduitSelectionne
+      );
+    },
+  };
 
 </script>
 
 
 <style lang="css" scoped>
+  .product {
+    margin: auto;
+    width: 80vw;
+  }
+
+  .product p {
+    text-align: left;
+  }
+
+  .product li {
+    list-style-type: none;
+    text-align: left;
+  }
+
 </style>

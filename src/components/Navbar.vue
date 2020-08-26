@@ -10,54 +10,56 @@
           <div>
             <router-link :to="'/accueil'">
               <img class="logo" src="../assets/logo1.png" alt="logo">
-            </router-link>           
+            </router-link>
           </div>
           <div class="menu">
             <nav>
               <ul>
+                <li> <router-link :to="'/accueil'">ACCUEIL</router-link> </li>
                 <li> <router-link :to="'/artisans'">NOS ARTISANS </router-link> </li>
                 <li> <router-link :to="'/allproduits'">NOS PRODUITS </router-link> </li>
                 <li> <router-link :to="'/nosEngagements'">NOS ENGAGEMENTS </router-link> </li>
-                <li>LE MEDIA</li>
+                <li><a href="#">LE MEDIA</a></li>
               </ul>
             </nav>
           </div>
         </div>
         <div class="search-bar">
           <div class="magnifier">
-
             <button type="button" name="button" class="searchbar-button" @click.prevent="openSearch" v-if="openButtonDisplay"><i class="fas fa-search"></i></button>
-
-
             <button type="button" class="close-button" @click.prevent="closeSearch" v-if="closeButtonDisplay"><i class="fas fa-times"></i></button>
-
           </div>
         </div>
       </div>
       <div class="smartphone-header">
-        <div class="burger-menu">
-          <button class="burger-open" type="button" name="button" @click.prevent="openSmartphoneMenu" v-if="burgerDisplay"><i class="fas fa-bars"></i></button>
+        <div class="burger-and-title">
+          <div class="burger-menu">
+            <button class="burger-open" type="button" name="button" @click.prevent="openSmartphoneMenu" v-if="burgerDisplay"><i class="fas fa-bars"></i></button>
+            <button class="burger-close" type="button" name="button" @click.prevent="closeSmartphoneMenu" v-if="crossDisplay"><i class="fas fa-times"></i></button>
+          </div>
+          <div class="title">
+            <h1>Ethically</h1>
+          </div>
         </div>
         <div class="smartphone-menu" v-if="smartphoneMenuDisplay">
-          <button class="burger-close" type="button" name="button" @click.prevent="closeSmartphoneMenu" v-if="crossDisplay"><i class="fas fa-times"></i></button>
           <nav>
               <ul>
+                <li> <router-link :to="'/accueil'">ACCUEIL</router-link> </li>
                 <li> <router-link :to="'/artisans'">NOS ARTISANS </router-link> </li>
                 <li> <router-link :to="'/allproduits'">NOS PRODUITS </router-link> </li>
                 <li> <router-link :to="'/nosEngagements'">NOS ENGAGEMENTS </router-link> </li>
-                <li>LE MEDIA</li>
+                <li><a href="#">LE MEDIA</a></li>
               </ul>
             </nav>
         </div>
-        <div class="title">
-          <h1>Ethically</h1>
-        </div>
-        <div class="search-bar">
-
-        </div>
+        <!-- <div class="smartphone-search-bar">
+          <div class="magnifier">
+            <button type="button" name="button" class="searchbar-button" @click.prevent="openSmartphoneSearch" v-if="openSmartphoneButtonDisplay"><i class="fas fa-search"></i></button>
+            <button type="button" class="close-button" @click.prevent="closeSmartphoneSearch" v-if="closeSmartphoneButtonDisplay"><i class="fas fa-times"></i></button>
+          </div>
+        </div> -->
       </div>
     </header>
-
     <main>
       <div v-if="searchBar" class="pop-up-searchbar-container">
         <div class="pop-up-searchbar">
@@ -78,7 +80,9 @@ export default {
         covidDisplay: true,
         searchBar: false,
         openButtonDisplay: true,
+        // openSmartphoneButtonDisplay: true,
         closeButtonDisplay: false,
+        // closeSmartphoneButtonDisplay: false,
         smartphoneMenuDisplay: false,
         crossDisplay: false,
         burgerDisplay: true,
@@ -101,6 +105,18 @@ export default {
         this.closeButtonDisplay = false;
         this.openButtonDisplay = true;
       },
+
+      // openSmartphoneSearch() {
+      //   this.searchBar = true;
+      //   this.closeSmartphoneButtonDisplay = true;
+      //   this.openSmartphoneButtonDisplay = false;
+      // },
+      //
+      // closeSmartphoneSearch() {
+      //   this.searchBar = false;
+      //   this.closeSmartphoneButtonDisplay = false;
+      //   this.openSmartphoneButtonDisplay = true;
+      // },
 
       openSmartphoneMenu() {
         this.smartphoneMenuDisplay = true;
@@ -152,11 +168,8 @@ header {
   flex-direction: row;
 }
 
-.menu {
-}
-
 header .menu {
-  width: 40vw;
+  width: 47vw;
 }
 
 .search-bar {
@@ -184,6 +197,14 @@ header .menu {
 .covid-banner p {
   margin-bottom: 0rem;
   text-align: center;
+}
+
+// LINKS
+
+.menu a {
+  color: #006845;
+  font-size: 1.2rem;
+  font-weight: 600;
 }
 
 
@@ -254,25 +275,29 @@ header .menu {
 
 
 /*================= MEDIA QUERIES =================*/
-
-@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+ // and (min-device-width: 768px)
+@media only screen and (max-device-width: 1024px) {
 
   .desktop-header {
     display: none;
   }
 
   .smartphone-header {
-    align-items: center;
+    align-items: flex-start;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
+  }
+
+  .burger-and-title {
+    align-items: baseline;
+    display: flex;
+    justify-content: space-between;
+    line-height: 0.3;
+    width: 70vw;
   }
 
   .covid-banner p, .covid-banner i {
     font-size: 2rem;
-  }
-
-  .burger-menu, .burger-menu-close {
-    width: 20vw;
   }
 
   .search-bar {
@@ -285,11 +310,13 @@ header .menu {
 
   h1 {
     font-size: 5rem;
+    font-weight: 600;
   }
 
   .burger-open, .burger-close {
     background-color: rgba(255, 255, 255, 0);
     border: none;
+    color: #2d3e50;
     font-size: 4.5rem;
     font-weight: 400;
     margin-left: 2rem;
@@ -299,8 +326,19 @@ header .menu {
     font-size: 2rem;
     line-height: 4.5rem;
     list-style-type: none;
+    text-align: left;
   }
 
+  .smartphone-menu a {
+    color: #006845;
+    font-size: 2.2rem;
+    font-weight: 600;
+  }
+
+  .title a {
+    color: black;
+    text-decoration: none;
+  }
 
 }
 
@@ -311,34 +349,40 @@ header .menu {
     display: none;
   }
 
-  .smartphone-header {
-    align-items: center;
-    display: flex;
-    flex-direction: row;
-    font-size: 5rem;
-  }
-
   .covid-banner {
     display: none;
   }
 
-  .smartphone-menu {
-    position: absolute;
+  .burger-and-title {
+    align-items: baseline;
+    width: 77vw;
+  }
+
+  #nav {
+    padding: 0rem;
   }
 
   h1 {
-    font-size: 5rem;
+    font-size: 3rem;
+  }
+
+  h2 {
+    font-size: 2rem;
   }
 
   .burger-open, .burger-close {
     background-color: rgba(255, 255, 255, 0);
     border: none;
     font-size: 8rem;
-    margin-left: 2rem;
+    width: 21vw;
+  }
+
+  .burger-menu button {
+    margin-left: 0rem;
   }
 
   .fa-bars, .fa-times {
-    font-size: 6rem;
+    font-size: 3rem;
   }
 
 
