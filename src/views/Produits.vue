@@ -2,7 +2,7 @@
   <div>
     <h2>Les produits</h2>
     <div class="products-group">
-      <div class="product-div" v-for="product in products" :key="product.id">
+      <div class="product-div" v-for="product in produits" :key="product.id">
         <CarteProduit :product="product"/>
       </div>
     </div>
@@ -12,19 +12,24 @@
 <script>
 
   import CarteProduit from "@/components/CarteProduit";
-  import {products as productsFromData} from "@/data.js";
+  // import {products as productsFromData} from "@/data.js";
 
   export default {
-      name: 'Produits',
-      components:
+    name: 'Produits',
+    components:
       { CarteProduit },
-      data() {
-          return {
-            products : productsFromData,
-          }
-      }
+    data() {
+        return {
+          produits : "",
+        }
+      },
+    mounted() {
+       const axios = require("axios");
+       axios.get('http://localhost:3000/produits')
+       .then(response => (this.produits = response.data))
+     }
+   };
 
-}
 </script>
 
 <style lang="css" >

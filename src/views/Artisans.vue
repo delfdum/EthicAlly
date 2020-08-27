@@ -11,20 +11,23 @@
 
 <script>
 import CarteArtisan from "@/components/CarteArtisan";
-import {artisans as artisansFromData} from "@/data.js";
+// import {artisans as artisansFromData} from "@/data.js";
 
 export default {
   name: 'Artisans',
-
   components:
     { CarteArtisan },
-
   data() {
       return {
-        artisans : artisansFromData
+        artisans : "",
       }
-  }
-}
+    },
+  mounted() {
+     const axios = require("axios");
+     axios.get('http://localhost:3000/artisans')
+     .then(response => (this.artisans = response.data))
+   }
+ };
 
 </script >
 

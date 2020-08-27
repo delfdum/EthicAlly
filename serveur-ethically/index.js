@@ -7,7 +7,7 @@ const db = mysql.createConnection({
     host:'localhost',
     user: 'root',
     password: 'admin_2020',
-    database: 'ethicallydb'
+    database: 'new_schema_alix'
 });
 
 // Connect
@@ -23,12 +23,29 @@ const app = express();
 app.use(cors());
 
 // Select posts
-app.get('/allproduits', (req, res) => {
-    let sql = 'SELECT * FROM products';
+app.get('/produits', (req, res) => {
+    let sql = 'SELECT * FROM produits';
     db.query(sql, (err, results) => {
         if(err) throw err;
         res.status(200).send(results);
     })
+})
+
+app.get('/artisans', (req, res) => {
+    let sql = 'SELECT * FROM artisans';
+    db.query(sql, (err, results) => {
+        if(err) throw err;
+        res.status(200).send(results);
+    })
+})
+
+app.post('/produits', (req, res) => {
+  let sql = 'INSERT INTO produits (id, name, type, category) VALUES(id, name, type, category)';
+  db.query(sql, (err, results) => {
+    if(err) throw err;
+    res.status(200).send(results);
+
+  })
 })
 
 // Create entrepreneurs table : fait sur Workbench : plus sécure

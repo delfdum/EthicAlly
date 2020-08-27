@@ -9,13 +9,12 @@
         <div class="logo-and-menu">
           <div>
             <router-link :to="'/accueil'">
-              <img class="logo" src="../assets/logo1.png" alt="logo">
+              <img class="logo" src="../assets/logo2.png" alt="logo">
             </router-link>
           </div>
           <div class="menu">
             <nav>
               <ul>
-                <li> <router-link :to="'/accueil'">ACCUEIL</router-link> </li>
                 <li> <router-link :to="'/artisans'">NOS ARTISANS </router-link> </li>
                 <li> <router-link :to="'/allproduits'">NOS PRODUITS </router-link> </li>
                 <li> <router-link :to="'/nosEngagements'">NOS ENGAGEMENTS </router-link> </li>
@@ -44,7 +43,6 @@
         <div class="smartphone-menu" v-if="smartphoneMenuDisplay">
           <nav>
               <ul>
-                <li> <router-link :to="'/accueil'">ACCUEIL</router-link> </li>
                 <li> <router-link :to="'/artisans'">NOS ARTISANS </router-link> </li>
                 <li> <router-link :to="'/allproduits'">NOS PRODUITS </router-link> </li>
                 <li> <router-link :to="'/nosEngagements'">NOS ENGAGEMENTS </router-link> </li>
@@ -169,7 +167,7 @@ header {
 }
 
 header .menu {
-  width: 47vw;
+  width: 55vw;
 }
 
 .search-bar {
@@ -335,10 +333,6 @@ header .menu {
     font-weight: 600;
   }
 
-  .title a {
-    color: black;
-    text-decoration: none;
-  }
 
 }
 
