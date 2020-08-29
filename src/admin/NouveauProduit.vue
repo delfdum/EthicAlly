@@ -3,39 +3,39 @@
     <h2>Ajouter un produit</h2>
     <form>
         <label for="">name</label>
-        <input type="text" v-model="name"/> <br>
+        <input type="text" v-model="name"/> <br><br>
 
         <label for="artisan-select">Choisir l'artisan:</label>
           <select name="artisans" v-model="artisan_id" >
             <option v-for="artisan in artisans" :key="artisan.id" :value="artisan.id" > {{artisan.name}}</option>
-          </select>  <br>
+          </select>  <br><br>
 
         <label for="">category</label>
-        <input type="text" v-model="category"/> <br>
+        <input type="text" v-model="category"/> <br><br>
 
         <label for="">type</label>
-        <input type="text" v-model="type"/> <br>
+        <input type="text" v-model="type"/> <br><br>
 
         <label for="">matériel</label>
-        <input type="text" v-model="materials"/> <br>
+        <input type="text" v-model="materials"/> <br><br>
 
-        <!-- thumbnail -->
-        <!-- photo -->
+        <!-- thumbnail ALIX-->
+        <!-- photo ALIX-->
 
         <label for="dimensions">dimensions</label>
-        <input type="text" v-model="dimensions"/> <br>
+        <input type="text" v-model="dimensions"/> <br><br>
 
         <label for="origine">origine</label>
-        <input type="text" v-model="origine"/> <br>
+        <input type="text" v-model="origine"/> <br><br>
 
         <label for="longPrez">présentation</label>
-        <input type="text" v-model="longPrez"/> <br>
+        <textarea v-model="longPrez" rows="15" cols="55"></textarea> <br><br>
 
         <label for="">produit du mois</label>
-        <input type="text" v-model="produitDuMois"/> <br>
+        <input type="text" v-model="produitDuMois"/> <br><br>
 
         <label for="artisanDuMois">artisan du mois</label>
-        <input type="text" v-model="artisanDuMois"/> <br>
+        <input type="text" v-model="artisanDuMois"/> <br><br>
 
         <button type="button" @click="postProduit">Envoyer</button>
     </form>

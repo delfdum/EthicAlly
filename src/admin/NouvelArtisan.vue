@@ -3,22 +3,23 @@
     <h2>Ajouter un artisan</h2>
     <form>
         <label for="">name</label>
-        <input type="text" v-model="name"/><br>
+        <input type="text" v-model="name"/><br><br>
 
         <label for="presentation">présentation</label>
-        <input type="text" v-model="presentation"/><br>
+        <textarea v-model="presentation" rows="15" cols="55"></textarea> <br><br>
+ 
 
         
-        <!-- photo -->
+        <!-- photo PARTIE ALIX-->
 
-        <!-- <label for="origine">origine</label>
-        <input type="text" v-model="origine"/><br> -->
+        <label for="origine">origine</label>
+        <input type="text" v-model="origine"/><br><br>
 
         <label for="firstPage">première page</label>
-        <input type="text" v-model="firstPage"/><br>
+        <input type="text" v-model="firstPage"/><br><br>
 
         <label for="artisanDuMois">artisan du mois</label>
-        <input type="text" v-model="artisanDuMois"/><br>
+        <input type="text" v-model="artisanDuMois"/><br><br>
 
         <button type="button" @click="postArtisan">Envoyer</button>
     </form>
