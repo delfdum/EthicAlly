@@ -4,7 +4,7 @@
     <h4>{{product.category}}</h4>
     <h4>{{product.type}}</h4>
 
-    <button @click="voirProduit(product.id_product)">Voir ce produit</button>
+    <button @click="voirProduit(product.id)">Voir ce produit</button>
 
     </div>
 </template>
