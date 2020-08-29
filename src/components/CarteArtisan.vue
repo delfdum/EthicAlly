@@ -1,8 +1,11 @@
 <template>
-  <div class="artisan">
+  <div class="artisan" v-bind:style="background-image: url("{artisan.thumbnail}")">
     <h3>{{artisan.name}}</h3>
     <h4>{{artisan.presentation}}</h4>
     <h4>{{artisan.origine}}</h4>
+    /* <img :src='artisan.thumbnail' class="thumbnail"/> */
+
+
 
     <button @click="voirArtisan(artisan.id)">Voir le travail de cet artisan</button>
 
@@ -27,7 +30,7 @@ export default {
 
   .artisan {
     background-color: rgb(240, 220, 240);
-    /* background-image: url("product.photo"); */
+    /* background-image: url("artisan.thumbnail"); */
     margin: 1rem;
     padding: 4rem 1rem 4rem 1rem;
   }
@@ -47,6 +50,10 @@ export default {
     margin-top: 1rem;
     padding: 0.5rem 1.6rem 0.4rem 1.6rem;
     text-align: center;
+  }
+
+  .thumbnail {
+    width: 19vw;
   }
 
   @media only screen and (max-device-width: 1024px) {

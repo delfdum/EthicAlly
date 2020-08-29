@@ -8,6 +8,7 @@ import Engagements from "@/views/Engagements.vue";
 import ProduitDetails from "@/views/ProduitDetails.vue";
 import Produits from "@/views/Produits.vue";
 import NouveauProduit from "@/views/NouveauProduit.vue";
+import NouvelArtisan from "@/views/NouvelArtisan.vue";
 
 
 
@@ -60,9 +61,14 @@ const routes = [
     component: Produits,
   },
   {
-    path: '/formulaire',
+    path: '/produits/nouveau',
     name: 'NouveauProduit',
     component: NouveauProduit,
+  },
+  {
+    path: '/artisans/nouveau',
+    name: 'NouvelArtisan',
+    component: NouvelArtisan,
   },
 
 ];
