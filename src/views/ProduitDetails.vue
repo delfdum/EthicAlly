@@ -1,7 +1,11 @@
 <template lang="html">
   <div class="product">
+    <div v-for="produitSelectionne in produit" :key="produitSelectionne.id">
+
     <h2>{{produitSelectionne.name}}</h2>
-    <h3>Crée par {{artisanSelectionne.name}}</h3>
+
+<!-- A FAIRE: METTRE NOM DE L'ARTISAN -->
+    <h3>Crée par {{produitSelectionne.artisan_id}}</h3>
     <img :src="produitSelectionne.photo" :alt="produitSelectionne.name">
     <p>{{produitSelectionne.longPrez}}</p>
     <ul>
@@ -9,41 +13,26 @@
       <li>{{produitSelectionne.materials}}</li>
       <li>{{produitSelectionne.origine}}</li>
     </ul>
+    </div>
   </div>
 </template>
 
 <script>
-  import {products} from "@/data.js";
-  import {products as productsFromData} from "@/data.js";
-  import {artisans as artisansFromData} from "@/data.js";
+
   export default {
     name: 'ProduitDetails',
-    name: 'ArtisanDetails',
-    data() {
-      return {
-        products: productsFromData,
-        idProduitSelectionne: 0,
-        produitSelectionne: {},
-        idArtisanSelectionne: 0,
-        artisanSelectionne: {},
-      };
-    },
-  computed: {
-    artisans: function() {
-      return artisansFromData.filter(artisan => {
-        return artisan.id_product === parseInt(this.idProduitSelectionne, 10);
-      });
-    }
+    
+data() {
+    return {
+      produit: "",
+    };
   },
-
   mounted() {
-    // On récupère le params id (qui est dans l'url) grâce à l'objet $route
-    this.idProduitSelectionne = this.$route.params.id_product;
-    // On sélectionne l'utilisateur qui a le même id que le params récupéré dans $route
-    this.produitSelectionne = this.products.find(
-      product => product.id_product == this.idProduitSelectionne
-      );
-    },
+      const axios = require("axios");
+//PAS TRES SURE ENCORE DONC TU PEUX COMMENTER POUR VOIR SI LE RESTE FONCTIONNE:
+      axios.get(`http://localhost:3000/produit/${this.$route.params.id}`)
+      .then(response => (this.produit = response.data));
+  },
   };
 
 </script>

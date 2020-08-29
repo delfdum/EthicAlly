@@ -3,6 +3,7 @@
     <h2>Nos artisans</h2>
     <div class="artisans-group">
         <div class="artisan-div" v-for="artisan in artisans" :key="artisan.id">
+          <img :src='artisan.photo'/>
           <CarteArtisan :artisan="artisan"/>
         </div>
     </div>
@@ -11,20 +12,23 @@
 
 <script>
 import CarteArtisan from "@/components/CarteArtisan";
-import {artisans as artisansFromData} from "@/data.js";
+// import {artisans as artisansFromData} from "@/data.js";
 
 export default {
   name: 'Artisans',
-
   components:
     { CarteArtisan },
-
   data() {
       return {
-        artisans : artisansFromData
+        artisans : "",
       }
-  }
-}
+    },
+  mounted() {
+     const axios = require("axios");
+     axios.get('http://localhost:3000/artisans')
+     .then(response => (this.artisans = response.data))
+   }
+ };
 
 </script >
 
