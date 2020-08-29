@@ -7,6 +7,10 @@ import Artisans from "@/views/Artisans.vue";
 import Engagements from "@/views/Engagements.vue";
 import ProduitDetails from "@/views/ProduitDetails.vue";
 import Produits from "@/views/Produits.vue";
+import NouveauProduit from "@/admin/NouveauProduit.vue";
+import NouvelArtisan from "@/admin/NouvelArtisan.vue";
+
+
 
 
 
@@ -48,7 +52,7 @@ const routes = [
     component: Engagements,
   },
   {
-    path: '/produitdetails/:id_product',
+    path: '/produitdetails/:id',
     name: 'ProduitDetails',
     component: ProduitDetails,
   },
@@ -56,6 +60,16 @@ const routes = [
     path: '/allproduits',
     name: 'Produits',
     component: Produits,
+  },
+  {
+    path: '/nouveauProduit',
+    name: 'NouveauProduit',
+    component: NouveauProduit,
+  },
+  {
+    path: '/nouvelArtisan',
+    name: 'NouvelArtisan',
+    component: NouvelArtisan,
   },
 
 ];
