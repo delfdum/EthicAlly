@@ -3,7 +3,6 @@
     <h2>Nos artisans</h2>
     <div class="artisans-group">
         <div class="artisan-div" v-for="artisan in artisans" :key="artisan.id">
-          <img :src='artisan.photo'/>
           <CarteArtisan :artisan="artisan"/>
         </div>
     </div>

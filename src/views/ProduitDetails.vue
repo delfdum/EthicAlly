@@ -29,7 +29,6 @@ data() {
   },
   mounted() {
       const axios = require("axios");
-//PAS TRES SURE ENCORE DONC TU PEUX COMMENTER POUR VOIR SI LE RESTE FONCTIONNE:
       axios.get(`http://localhost:3000/produit/${this.$route.params.id}`)
       .then(response => (this.produit = response.data));
   },
