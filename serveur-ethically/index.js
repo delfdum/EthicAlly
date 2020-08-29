@@ -1,57 +1,142 @@
 const express = require('express');
-const cors = require('cors')
+const cors = require('cors');
+const bodyParser = require('body-parser');
 const mysql = require('mysql');
-
-// create connection
+const app = express();
+// create connection à la bdd mysql:
 const db = mysql.createConnection({
     host:'localhost',
     user: 'root',
-    password: 'admin_2020',
-    database: 'ethicallydb'
+    password: 'MOUCHETTE',
+    database: 'new_schema_alix'
 });
 
-// Connect
+// ALIX ALIX ALIX ALIX ALIX ALIX ALIX ALIX ALIX ALIX ALIX 
+// ci-dessus dans password, mets le tien
+
+
+
+
+
+// Connection à la bdd:
 db.connect((err) => {
     if(err){
         throw err;
     }
     console.log('MySql Connected');
 });
-
-const app = express();
-
+// Utilisation du middleware cors pour éviter les problèmes de Same Origin
 app.use(cors());
 
-// Select posts
-app.get('/allproduits', (req, res) => {
-    let sql = 'SELECT * FROM products';
+// support parsing of application/json type post data
+app.use(bodyParser.json());
+
+//support parsing of application/x-www-form-urlencoded post data
+app.use(bodyParser.urlencoded({ extended: true }));
+
+/////////////////////////////////////////////////////////////////////////////
+//requête GET pour afficher tous les produits:
+app.get('/produits', (req, res) => {
+    let sql = 'SELECT * FROM produits';
+    db.query(sql, (err, results) => {
+        if(err) throw err;
+        res.status(200).send(results);
+    })
+})
+//requête GET pour afficher un produit:
+app.get('/produit/:id', (req, res) => {
+    let sql = 'SELECT * FROM produits WHERE id=' + req.params.id;
+    db.query(sql, (err, results) => {
+        if(err) throw err;
+        res.status(200).send(results);
+    })
+})
+//requête GET pour afficher tous les artisans:
+app.get('/artisans', (req, res) => {
+    let sql = 'SELECT * FROM artisans';
+    db.query(sql, (err, results) => {
+        if(err) throw err;
+        res.status(200).send(results);
+    })
+})
+//requête GET pour afficher un artisan:
+app.get('/artisan/:id', (req, res) => {
+    let sql = 'SELECT * FROM artisans WHERE id=' + req.params.id;
+    db.query(sql, (err, results) => {
+        if(err) throw err;
+        res.status(200).send(results);
+    })
+})
+//requête GET pour afficher LE produit de l'artisan:
+//PAS TRES SURE ENCORE DONC TU PEUX COMMENTER POUR VOIR SI LE RESTE FONCTIONNE
+app.get('/produitsArtisan/:id', (req, res) => {
+    let sql = 'SELECT * FROM produits WHERE artisan_id=' + req.params.id;
     db.query(sql, (err, results) => {
         if(err) throw err;
         res.status(200).send(results);
     })
 })
 
-// Create entrepreneurs table : fait sur Workbench : plus sécure
-// app.get('/createentrepreneurstable', (req, res) => {
-//   let sql = 'CREATE TABLE entrepreneurs (id INT AUTO_INCREMENT, firstname VARCHAR(255), lastname VARCHAR(255), address VARCHAR(255), cp INT, city VARCHAR(255), country VARCHAR(255), mail VARCHAR(255), phone INT, raison_sociale VARCHAR(255), siret INT, capital_social INT, ca INT, PRIMARY KEY(id)';
-//   db.query(sql, (err, result) => {
-//     if(err) throw err;
-//     console.log(result);
-//     res.send('Entrepreneurs table created');
-//   });
-// });
+//////////////// REQUETES POST ////////////////
 
-// Connexion Workbench : donner un nom à la connexion de MySQL server
-// host : localhost (ligne 6 de ce doc)
-// port : 3306 (par défaut pour MySQL ; le port 3000 est le port d'écoute de Node (tout en bas sur ce doc : app.listen))
-// user + password : celui indiqué ci-dessus en lignes 5 à 10
-// Clic Test connection
+//POST pour entrer un nouvel artisan:
+app.post('/artisans/nouveau', (req, res) => {
+    let sql =  `INSERT INTO artisans (name, presentation, thumbnail, photo, firstPage, artisanDuMois) 
+    VALUES ('${req.body.name}', '${req.body.presentation}', '${req.body.thumbnail}', '${req.body.photo}', ${req.body.firstPage}, ${req.body.artisanDuMois} )`;
+    db.query(sql, (err, results) => {
+        if(err) throw err;
+        res.status(200).send(results);
+    })
+})
 
-// Table projets (créée directement sur Workbench) :
-// CREATE TABLE projets (id INT AUTO_INCREMENT PRIMARY KEY, titre VARCHAR(255), description TEXT, financial_needs INT, other_needs TEXT, img VARCHAR(255), logo VARCHAR(255))";
+//POST pour entrer un nouveau produit:
+app.post('/produits/nouveau', (req, res) => {
+    let sql =  `INSERT INTO produits 
+                                    (name, 
+                                    artisan_id, 
+                                    category, 
+                                    type,  
+                                    materials, 
+                                    thumbnail, 
+                                    photo, 
+                                    dimensions, 
+                                    origine, 
+                                    longPrez, 
+                                    produitDuMois, 
+                                    artisanDuMois) 
+                VALUES ('${req.body.name}',
+                        '${req.body.artisan_id}', 
+                        '${req.body.category}',
+                        '${req.body.type}', 
+                        '${req.body.materials}',
+                        '${req.body.thumbnail}',
+                        '${req.body.photo}', 
+                        '${req.body.dimensions}',
+                        '${req.body.origine}', 
+                        '${req.body.longPrez}', 
+                        '${req.body.produitDuMois}', 
+                        '${req.body.artisanDuMois}' )`;
+    db.query(sql, (err, results) => {
+        if(err) throw err;
+        res.status(200).send(results);
+    })
+})
 
-// Table investisseurs (créée directement sur Workbench) :
-// CREATE TABLE investisseurs (id INT AUTO_INCREMENT PRIMARY KEY, firstname VARCHAR(255), lastname VARCHAR(255), address VARCHAR(255), cp INT, phone INT, country VARCHAR(255), mail VARCHAR(255), risk VARCHAR(255), amount-to-invest INT, profitability INT, why_invest VARCHAR(255))";
+/////////////////////////////////////////////////////////////////////      
+     
+    
+      
+     
+
+
+
+
+
+
+
+
+
+
 
 
 app.listen('3000', () => {
