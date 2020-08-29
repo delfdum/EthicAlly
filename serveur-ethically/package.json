@@ -1,4 +1,4 @@
-n{
+{
   "name": "ethically",
   "version": "1.0.0",
   "description": "site commerce equitable",
@@ -7,5 +7,11 @@ n{
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Delphine Dumont et Alix Pelletier",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "mysql": "5.7.16"
+  }
 }
