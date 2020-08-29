@@ -122,12 +122,35 @@ app.post('/produits/nouveau', (req, res) => {
     })
 })
 
-/////////////////////////////////////////////////////////////////////      
-     
-    
-      
-     
+/////////////////////////DELETE////////////////////////////////////////////  
 
+//requête DELETE pour supprimer un artisan:
+app.delete('/artisandelete/:id', (req, res) => {
+    let sql = 'DELETE FROM artisans WHERE id=' + req.params.id;
+    db.query(sql, (err, results) => {
+        if(err) throw err;
+        res.status(200).send(results);
+    })
+})
+
+
+/////////////////////UPDATE////////////////////////////////////////////////
+///requête UPDATE pour un artisan    
+     
+app.put('/changeArtisan/:id', (req, res) => {
+    let sql =  `UPDATE artisans SET                  
+                        name = '${req.body.name}' , 
+                        presentation = '${req.body.presentation}', 
+                        thumbnail = '${req.body.thumbnail}', 
+                        photo = '${req.body.photo}', 
+                        firstPage = ${req.body.firstPage}, 
+                        artisanDuMois = ${req.body.artisanDuMois}
+    WHERE id=` + req.params.id;
+    db.query(sql, (err, results) => {
+        if(err) throw err;
+        res.status(200).send(results);
+    })
+})
 
 
 
