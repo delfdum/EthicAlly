@@ -3,6 +3,8 @@
     <h3>{{artisan.name}}</h3>
     <h4>{{artisan.presentation}}</h4>
     <h4>{{artisan.origine}}</h4>
+    <img :src='artisan.thumbnail'/>
+    
 
     <button @click="voirArtisan(artisan.id)">Voir le travail de cet artisan</button>
 
