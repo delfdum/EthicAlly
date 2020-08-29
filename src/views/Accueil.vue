@@ -12,11 +12,11 @@
     <div class="accueil-div">
       <h2>L'artisan du mois</h2>
       <div class="artisan-du-mois">
-        <div class="portrait" v-for="artisan in artisans" :key="artisan.id" v-if="artisan.portrait">
+        <div class="portrait" v-for="artisan in artisans" :key="artisan.id">
             <CarteArtisan :artisan="artisan"/>
         </div>
-        <div class="products">
-          <div class="product-div" v-for="product in products" :key="product.id_product" v-if="product.produit_du_mois">
+        <div class="produits">
+          <div class="product-div" v-for="product in produits" :key="product.id_product">
             <CarteProduit :product="product"/>
           </div>
         </div>
@@ -24,8 +24,8 @@
     </div>
     <div class="accueil-div">
       <h2>Titre Produits</h2>
-      <div class="products">
-        <div class="product-div" v-for="product in products" :key="product.id_product">
+      <div class="produits">
+        <div class="product-div" v-for="product in produits" :key="product.id_product">
           <CarteProduit :product="product"/>
         </div>
       </div>
@@ -33,7 +33,7 @@
     <div class="accueil-div">
       <h2>Nos artisans du moment</h2>
       <div class="artisans">
-        <div class="artisan-div" v-for="artisan in artisans" :key="artisan.id" v-if="artisan.firstPage">
+        <div class="artisan-div" v-for="artisan in artisans" :key="artisan.id">
           <div>
             <CarteArtisan :artisan="artisan"/>
           </div>
@@ -62,29 +62,33 @@
 
 <script>
 import CarteProduit from "@/components/CarteProduit";
-import {products as productsFromData} from "@/data.js";
+// import {produits as produitsFromData} from "@/data.js";
 import CarteArtisan from "@/components/CarteArtisan";
-import {artisans as artisansFromData} from "@/data.js";
+// import {artisans as artisansFromData} from "@/data.js";
 
 export default {
-  // name: 'Accueil, Artisans',
+   name: 'Accueil',
 
   components:
     { CarteProduit, CarteArtisan },
 
   data() {
      return {
-      artisans : artisansFromData,
-      products: productsFromData
+      artisans : "",
+      produits: ""
     };
   },
-  // computed: {
-  //   products: function() {
-  //     return productsFromData.filter(product => {
-  //       return product.artisan_id === parseInt(this., 10);
-  //     });
-  //   }
-  // },
+
+   mounted() {
+     const axios = require("axios");
+     axios.get('http://localhost:3000/artisans')
+     .then(response => (this.artisans = response.data))
+
+      axios.get('http://localhost:3000/produits')
+       .then(response => (this.produits = response.data))
+   }
+ 
+
 }
 
 </script >
@@ -134,7 +138,7 @@ export default {
   vertical-align:middle;
 }
 
-.products {
+.produits {
   align-content: space-around;
   display: flex;
   flex-direction: row;
