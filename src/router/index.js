@@ -9,8 +9,8 @@ import ProduitDetails from "@/views/ProduitDetails.vue";
 import Produits from "@/views/Produits.vue";
 import NouveauProduit from "@/admin/NouveauProduit.vue";
 import NouvelArtisan from "@/admin/NouvelArtisan.vue";
-
-
+import DeleteArtisan from "@/admin/DeleteArtisan.vue";
+import ModifierArtisan from "@/admin/ModifierArtisan.vue";
 
 
 
@@ -70,6 +70,16 @@ const routes = [
     path: '/nouvelArtisan',
     name: 'NouvelArtisan',
     component: NouvelArtisan,
+  },
+  {
+    path: '/deleteArtisan',
+    name: 'DeleteArtisan',
+    component: DeleteArtisan,
+  },
+  {
+    path: '/modifierArtisan',
+    name: 'ModifierArtisan',
+    component: ModifierArtisan,
   },
 
 ];
