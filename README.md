@@ -1,7 +1,15 @@
 # ethically
 vente produits artisanaux et locaux
 
-lister les étapes à faire
+# Fonctionnement du projet:
+
+2 parties:
+- le site ( dans le dossier view)
+- la partie admin ( dans le dossier admin)
+
+Le serveur node est dans le dossier serveur-ethically
+
+On utilise une bdd en mysql et la database est sur workbench
 
 # ethically
 
