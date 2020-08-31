@@ -36,7 +36,7 @@ export default {
  //on met les ` qd on mélange des valeurs et du js
         axios.delete(`http://localhost:3000/artisandelete/${id}`)
         .then((res) => {
-          alert ('l\' artisan a été supprimé');
+          alert ('êtes-vous certain(e) de supprimer cet artisan?');
           //pour rafraichier la page sans utilsateur recharge sa page
            axios.get('http://localhost:3000/artisans')
           .then(response => (this.artisans = response.data))
