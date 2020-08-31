@@ -5,7 +5,7 @@
         <label for="">name</label>
         <input type="text" v-model="name"/><br><br>
 
-        <label for="presentation">présentation</label>
+        <label for="presentation">présentation</label><br>
         <textarea v-model="presentation" rows="15" cols="55"></textarea> <br><br>
  
 
@@ -15,8 +15,12 @@
         <label for="origine">origine</label>
         <input type="text" v-model="origine"/><br><br>
 
+        <!-- <label for="firstPage">première page</label>
+        <input type="text" v-model="firstPage"/><br><br> -->
+
         <label for="firstPage">première page</label>
-        <input type="text" v-model="firstPage"/><br><br>
+        <input type="checkbox" value="première page" v-model="firstPage"><br><br>
+
 
         <label for="artisanDuMois">artisan du mois</label>
         <input type="text" v-model="artisanDuMois"/><br><br>
