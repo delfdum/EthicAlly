@@ -1,11 +1,12 @@
 <template>
   <div>
     <h2>Nos artisans</h2>
+<!-- FAIRE CSS -->
     <div class="artisans-group">
         <div class="artisan-div" v-for="artisan in artisans" :key="artisan.id">
           <h1>{{artisan.name}}</h1>
            <button type="button" @click="deleteArtisan(artisan.id)">supprimer</button>
-   <!-- TROUVER L ACTION PUR QUE UTILISATEUR SOIT SUR DE SUPRIMER, FAIRE UNE 2e VALIDATION OU UN EFENETRE ALERT "ETES VOUS SUR DE SUPPRIMER" -->
+<!-- TROUVER L ACTION POUR QUE UTILISATEUR SOIT SUR DE SUPPRIMER, FAIRE UNE 2e VALIDATION OU UN EFENETRE ALERT "ETES VOUS SUR DE SUPPRIMER" -->
         </div>
     </div>
   </div>
