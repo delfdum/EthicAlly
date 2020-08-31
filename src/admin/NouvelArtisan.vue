@@ -23,7 +23,8 @@
 
 
         <label for="artisanDuMois">artisan du mois</label>
-        <input type="text" v-model="artisanDuMois"/><br><br>
+        <!-- <input type="text" v-model="artisanDuMois"/><br><br> -->
+        <input type="checkbox" value="artisan du mois" v-model="artisanDuMois"><br><br>
 
         <button type="button" @click="postArtisan">Envoyer</button>
     </form>
