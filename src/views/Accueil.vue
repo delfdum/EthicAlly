@@ -96,7 +96,7 @@ export default {
 <style lang="css" scoped>
 
 .presentation {
-  background-image: url("../../assets/images/sculpture.png");
+  background-image: url("../assets/sculpture.png");
   background-position: right;
   background-repeat: no-repeat;
   background-size: contain;
@@ -125,7 +125,7 @@ export default {
 }
 
 .portrait .artisan {
-  background-image: url("../../assets/images/portrait-1.png");
+  background-image: url("../assets/portrait-1.png");
   background-repeat: no-repeat;
   background-size: contain;
   height: 100%;
