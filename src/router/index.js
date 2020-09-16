@@ -11,8 +11,11 @@ import NouveauProduit from "@/admin/NouveauProduit.vue";
 import NouvelArtisan from "@/admin/NouvelArtisan.vue";
 import DeleteArtisan from "@/admin/DeleteArtisan.vue";
 import ModifierArtisan from "@/admin/ModifierArtisan.vue";
-
-
+import modifartisans from "@/admin/modifartisans.vue";
+import modifierProduit from "@/admin/modifierProduit.vue";
+import modifProduits from "@/admin/modifProduits.vue";
+import DeleteProduit from "@/admin/DeleteProduit.vue";
+import MenuAdmin from "@/admin/MenuAdmin.vue";
 
 Vue.use(VueRouter);
 
@@ -77,10 +80,37 @@ const routes = [
     component: DeleteArtisan,
   },
   {
-    path: '/modifierArtisan',
+    path: '/modifierArtisan/:id',
     name: 'ModifierArtisan',
     component: ModifierArtisan,
   },
+  {
+    path: '/modifartisans',
+    name: 'modifartisans',
+    component: modifartisans,
+  },
+  {
+    path: '/modifierProduit/:id',
+    name: 'modifierProduit',
+    component: modifierProduit,
+  },
+  {
+    path: '/modifProduits',
+    name: 'modifProduits',
+    component: modifProduits,
+  },
+  {
+    path: '/deleteProduit',
+    name: 'DeleteProduit',
+    component: DeleteProduit,
+  },
+  {
+    path: '/MenuAdmin',
+    name: 'MenuAdmin',
+    component: MenuAdmin,
+  },
+
+  
 
 ];
 

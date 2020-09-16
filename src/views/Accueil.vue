@@ -12,11 +12,11 @@
     <div class="accueil-div">
       <h2>L'artisan du mois</h2>
       <div class="artisan-du-mois">
-        <div class="portrait" v-for="artisan in artisans" :key="artisan.id">
+        <div class="portrait" v-for="artisan in artisanDuMois" :key="artisan.id">
             <CarteArtisan :artisan="artisan"/>
         </div>
         <div class="produits">
-          <div class="product-div" v-for="product in produits" :key="product.id_product">
+          <div class="product-div" v-for="product in produitsArtisanDuMois" :key="product.id">
             <CarteProduit :product="product"/>
           </div>
         </div>
@@ -25,7 +25,7 @@
     <div class="accueil-div">
       <h2>Titre Produits</h2>
       <div class="produits">
-        <div class="product-div" v-for="product in produits" :key="product.id_product">
+        <div class="product-div" v-for="product in produitsFirstpage" :key="product.id">
           <CarteProduit :product="product"/>
         </div>
       </div>
@@ -33,7 +33,7 @@
     <div class="accueil-div">
       <h2>Nos artisans du moment</h2>
       <div class="artisans">
-        <div class="artisan-div" v-for="artisan in artisans" :key="artisan.id">
+        <div class="artisan-div" v-for="artisan in artisansFirstpage" :key="artisan.id">
           <div>
             <CarteArtisan :artisan="artisan"/>
           </div>
@@ -74,19 +74,28 @@ export default {
 
   data() {
      return {
-      artisans : "",
-      produits: ""
+      artisanDuMois : "",
+      produitsArtisanDuMois: "",
+      produitsFirstpage:"",
+      artisansFirstpage:"",
     };
   },
 
    mounted() {
      const axios = require("axios");
-     axios.get('http://localhost:3000/artisans')
-     .then(response => (this.artisans = response.data))
+     axios.get(`http://localhost:3000/artisanDuMois/${this.$route.params.id}`)
+      .then(response => (this.artisanDuMois = response.data));
 
-      axios.get('http://localhost:3000/produits')
-       .then(response => (this.produits = response.data))
-   }
+     axios.get(`http://localhost:3000/produitsArtisanDuMois/${this.$route.params.id}`)
+      .then(response => (this.produitsArtisanDuMois = response.data));
+
+    axios.get('http://localhost:3000/produitsFirstpage')
+     .then(response => (this.produitsFirstpage = response.data))
+  
+    axios.get('http://localhost:3000/artisansFirstpage')
+     .then(response => (this.produitsFirstpage = response.data))
+  
+  },
  
 
 }

@@ -1,6 +1,7 @@
 <template>
   <div class="">
     <h2>Ajouter un artisan</h2>
+     <button @click="retourMenu()">retour au menu</button>
     <form>
         <label for="">name</label>
         <input type="text" v-model="name"/><br><br>
@@ -49,6 +50,10 @@ export default {
     }
   },
   methods: {
+     retourMenu() {
+        this.$router.push({ path: `/MenuAdmin` });
+      },
+      
     postArtisan() {
       const axios = require('axios');
   //dans axios.post{2 arguments 1/ le chemin URL, 2/ le body, c'est les infos qu'on envoie à l'API et c'est toujours un objet}

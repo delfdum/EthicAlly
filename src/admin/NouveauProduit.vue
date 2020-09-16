@@ -1,6 +1,7 @@
 <template>
   <div class="">
     <h2>Ajouter un produit</h2>
+     <button @click="retourMenu()">retour au menu</button>
     <form>
         <label for="">name</label>
         <input type="text" v-model="name"/> <br><br>
@@ -31,11 +32,14 @@
         <label for="longPrez">présentation</label>
         <textarea v-model="longPrez" rows="15" cols="55"></textarea> <br><br>
 
-        <label for="">produit du mois</label>
+        <label for="firstPage">première page</label>
+        <input type="checkbox" value="première page" v-model="firstPage"><br><br>
+
+        <!-- <label for="">produit du mois</label>
         <input type="text" v-model="produitDuMois"/> <br><br>
 
         <label for="artisanDuMois">artisan du mois</label>
-        <input type="text" v-model="artisanDuMois"/> <br><br>
+        <input type="text" v-model="artisanDuMois"/> <br><br> -->
 
         <button type="button" @click="postProduit">Envoyer</button>
     </form>
@@ -60,8 +64,7 @@ export default {
        dimensions: "",
        origine: "",
        longPrez: "",     
-       produitDuMois: false,
-       artisanDuMois: false,
+       firstPage: false,
        success: false,
     }
   },
@@ -73,6 +76,10 @@ export default {
    },
 
   methods: {
+     retourMenu() {
+        this.$router.push({ path: `/MenuAdmin` });
+      },
+
     postProduit() {
       const axios = require('axios');
   //dans axios.post{2 arguments 1/ le chemin URL, 2/ le body, c'est les infos qu'on envoie à l'API et c'est toujours un objet}
@@ -82,13 +89,11 @@ export default {
           category: this.category,
           type: this.type,
           materials: this.materials,
-          thumbnail: this.thumbnail,
           photo: this.photo,
           dimensions: this.dimensions,
           origine: this.origine,
           longPrez: this.longPrez,
-          produitDuMois: this.produitDuMois,
-          artisanDuMois: this.artisanDuMois,
+          firstPage: this.firstPage,
       })
       .then(() => {
         this.name = "";
@@ -101,8 +106,7 @@ export default {
         this.dimensions = "";
         this.origine = "";
         this.longPrez = "";
-        this.produitDuMois = "";
-        this.artisanDuMois = "";
+        this.firstPage = "";
         this.success = true;
       })
       .catch((err) => {

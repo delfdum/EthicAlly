@@ -1,6 +1,6 @@
 <template lang="html">
   <div class="">
-    <div v-for="artisanSelectionne in artisan" :key="artisanSelectionne.id">
+    <div class="artisan-ensemble" v-for="artisanSelectionne in artisan" :key="artisanSelectionne.id">
       <h3>{{ artisanSelectionne.name}}</h3>
       <img :src='artisanSelectionne.photo'/>
       <p> Présentation:{{ artisanSelectionne.presentation}}</p>
@@ -35,6 +35,16 @@ export default {
 };
 </script>
 <style lang="css" scoped>
+
+.artisan-ensemble {
+    display: flex;
+    flex-direction: row;
+    margin: auto;
+    margin-bottom: 3rem;
+    min-height: 90vh;
+    width: 90vw;
+  }
+
   .products {
     display: flex;
     flex-direction: row;
